@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             font-family: 'Poppins', sans-serif;
@@ -65,25 +66,15 @@
         }
         
         .fade-in {
-            animation: fadeIn 0.8s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .stagger-fade-in > * {
             opacity: 0;
-            animation: fadeIn 0.6s ease-out forwards;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         
-        .stagger-fade-in > *:nth-child(1) { animation-delay: 0.1s; }
-        .stagger-fade-in > *:nth-child(2) { animation-delay: 0.2s; }
-        .stagger-fade-in > *:nth-child(3) { animation-delay: 0.3s; }
-        .stagger-fade-in > *:nth-child(4) { animation-delay: 0.4s; }
-        .stagger-fade-in > *:nth-child(5) { animation-delay: 0.5s; }
-        .stagger-fade-in > *:nth-child(6) { animation-delay: 0.6s; }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
         
         /* Floating animation */
         .float-animation {
@@ -121,6 +112,196 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        
+        /* Company logo */
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #10b981;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            /* Hero section mobile */
+            .hero-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.125rem;
+                padding: 0 1rem;
+            }
+            
+            /* Floating elements grid */
+            .floating-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+                margin-top: 2rem;
+            }
+            
+            .floating-grid > div {
+                padding: 1rem;
+            }
+            
+            .floating-grid i {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Collections grid */
+            .collections-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .collection-card {
+                padding: 1.5rem;
+            }
+            
+            /* Countdown grid */
+            .countdown-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }
+            
+            .countdown-grid > div {
+                padding: 1.5rem;
+            }
+            
+            .countdown-grid .text-5xl {
+                font-size: 2.5rem;
+            }
+            
+            /* Company cards */
+            .company-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .company-card {
+                padding: 1.5rem;
+            }
+            
+            /* Button adjustments */
+            .btn-lg {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            
+            /* Opening section padding */
+            #opening .rounded-3xl {
+                padding: 1.5rem;
+            }
+            
+            /* Badge sizing */
+            .badge-lg {
+                font-size: 0.875rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            /* Text sizing for mobile */
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            .text-4xl {
+                font-size: 2rem;
+            }
+            
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .floating-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .countdown-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .countdown-grid .text-5xl {
+                font-size: 2rem;
+            }
+            
+            .company-logo {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .countdown-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem;
+            }
+            
+            .countdown-grid > div {
+                padding: 1rem;
+            }
+            
+            .countdown-grid .text-5xl {
+                font-size: 1.75rem;
+            }
+        }
+        
+        /* Prevent text overflow */
+        .truncate-2-lines {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Touch-friendly buttons */
+        .btn-touch {
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Improved spacing for mobile */
+        .section-py {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        @media (min-width: 768px) {
+            .section-py {
+                padding-top: 5rem;
+                padding-bottom: 5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -137,142 +318,142 @@
     <div id="mainContent" class="hidden page-transition">
         
         <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-emerald-50 px-4">
-            <div class="max-w-6xl mx-auto text-center stagger-fade-in">
-                <div class="float-animation mb-8">
-                    <div class="badge badge-lg badge-outline border-emerald-500 text-emerald-600 text-lg font-medium px-6 py-3 mb-6">
+        <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white to-emerald-50 px-4 pt-20 pb-10">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="float-animation mb-6 md:mb-8">
+                    <div class="badge badge-lg badge-outline border-emerald-500 text-emerald-600 text-sm md:text-lg font-medium px-4 md:px-6 py-2 md:py-3 mb-4 md:mb-6">
                         <i class="fas fa-gem mr-2"></i>
                         Wedding & Traditional Couture
                     </div>
                 </div>
                 
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+                <h1 class="hero-title text-3xl md:text-5xl lg:text-7xl font-bold text-gray-900 mb-4 md:mb-6">
                     Varsha <span class="text-accent">Swayamvaram</span>
                 </h1>
                 
-                <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10">
+                <p class="hero-subtitle text-base md:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 md:mb-10">
                     Where tradition meets timeless elegance. Exquisite bridal wear curated for the modern Indian bride.
                 </p>
                 
-                <div class="flex flex-wrap justify-center gap-4 mb-16">
-                    <button onclick="scrollToSection('collections')" class="btn btn-lg bg-emerald-500 hover:bg-emerald-600 text-white border-0 px-8">
+                <div class="btn-container flex flex-col sm:flex-row justify-center gap-3 md:gap-4 mb-12 md:mb-16">
+                    <button onclick="scrollToSection('collections')" class="btn btn-lg bg-emerald-500 hover:bg-emerald-600 text-white border-0 px-6 md:px-8 btn-touch">
                         Explore Collections
                     </button>
-                    <button onclick="scrollToSection('opening')" class="btn btn-lg btn-outline border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white px-8">
+                    <button onclick="scrollToSection('opening')" class="btn btn-lg btn-outline border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white px-6 md:px-8 btn-touch">
                         Opening Soon
                     </button>
                 </div>
                 
                 <!-- Floating elements -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                        <i class="fas fa-vest text-emerald-500 text-3xl mb-4"></i>
-                        <h3 class="font-semibold text-gray-800">Banaras Silk</h3>
+                <div class="floating-grid grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16">
+                    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <i class="fas fa-vest text-emerald-500 text-2xl md:text-3xl mb-3 md:mb-4"></i>
+                        <h3 class="font-semibold text-gray-800 text-sm md:text-base">Banaras Silk</h3>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                        <i class="fas fa-threads text-emerald-500 text-3xl mb-4"></i>
-                        <h3 class="font-semibold text-gray-800">Kanchipuram</h3>
+                    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <i class="fas fa-threads text-emerald-500 text-2xl md:text-3xl mb-3 md:mb-4"></i>
+                        <h3 class="font-semibold text-gray-800 text-sm md:text-base">Kanchipuram</h3>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                        <i class="fas fa-crown text-emerald-500 text-3xl mb-4"></i>
-                        <h3 class="font-semibold text-gray-800">Bridal Wear</h3>
+                    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <i class="fas fa-crown text-emerald-500 text-2xl md:text-3xl mb-3 md:mb-4"></i>
+                        <h3 class="font-semibold text-gray-800 text-sm md:text-base">Bridal Wear</h3>
                     </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
-                        <i class="fas fa-camera text-emerald-500 text-3xl mb-4"></i>
-                        <h3 class="font-semibold text-gray-800">Photography</h3>
+                    <div class="bg-white p-4 md:p-6 rounded-2xl shadow-lg border border-gray-100">
+                        <i class="fas fa-camera text-emerald-500 text-2xl md:text-3xl mb-3 md:mb-4"></i>
+                        <h3 class="font-semibold text-gray-800 text-sm md:text-base">Photography</h3>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Collections Section -->
-        <section id="collections" class="py-20 bg-gray-50">
+        <section id="collections" class="section-py bg-gray-50">
             <div class="max-w-7xl mx-auto px-4">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                <div class="text-center mb-10 md:mb-16 fade-in">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                         Collections & <span class="text-accent">Services</span>
                     </h2>
-                    <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    <p class="text-gray-600 text-base md:text-lg max-w-3xl mx-auto">
                         A carefully curated selection of traditional wear and bridal services
                     </p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="collections-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     <!-- Collection Card 1 -->
-                    <div class="collection-card bg-white rounded-2xl shadow-lg p-8 fade-in">
-                        <div class="text-emerald-500 text-4xl mb-6">
+                    <div class="collection-card bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in">
+                        <div class="text-emerald-500 text-3xl md:text-4xl mb-4 md:mb-6">
                             <i class="fas fa-vest"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Banaras Sarees</h3>
-                        <p class="text-gray-600 mb-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Banaras Sarees</h3>
+                        <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
                             Handwoven silk sarees with intricate zari work, embodying centuries of weaving tradition from the holy city of Banaras.
                         </p>
-                        <div class="badge badge-outline border-emerald-500 text-emerald-600">Traditional</div>
+                        <div class="badge badge-outline border-emerald-500 text-emerald-600 text-xs md:text-sm">Traditional</div>
                     </div>
                     
                     <!-- Collection Card 2 -->
-                    <div class="collection-card bg-white rounded-2xl shadow-lg p-8 fade-in">
-                        <div class="text-emerald-500 text-4xl mb-6">
+                    <div class="collection-card bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in">
+                        <div class="text-emerald-500 text-3xl md:text-4xl mb-4 md:mb-6">
                             <i class="fas fa-threads"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Kanchipuram Sarees</h3>
-                        <p class="text-gray-600 mb-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Kanchipuram Sarees</h3>
+                        <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
                             Pure silk sarees with gold thread work from Kanchipuram, known for their durability, rich colors, and traditional motifs.
                         </p>
-                        <div class="badge badge-outline border-emerald-500 text-emerald-600">Premium</div>
+                        <div class="badge badge-outline border-emerald-500 text-emerald-600 text-xs md:text-sm">Premium</div>
                     </div>
                     
                     <!-- Collection Card 3 -->
-                    <div class="collection-card bg-white rounded-2xl shadow-lg p-8 fade-in">
-                        <div class="text-emerald-500 text-4xl mb-6">
+                    <div class="collection-card bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in">
+                        <div class="text-emerald-500 text-3xl md:text-4xl mb-4 md:mb-6">
                             <i class="fas fa-crown"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Wedding Costumes</h3>
-                        <p class="text-gray-600 mb-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Wedding Costumes</h3>
+                        <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
                             Complete bridal ensembles including lehengas, sarees, and accessories for the bride, groom, and wedding party.
                         </p>
-                        <div class="badge badge-outline border-emerald-500 text-emerald-600">Complete Sets</div>
+                        <div class="badge badge-outline border-emerald-500 text-emerald-600 text-xs md:text-sm">Complete Sets</div>
                     </div>
                     
                     <!-- Collection Card 4 -->
-                    <div class="collection-card bg-white rounded-2xl shadow-lg p-8 fade-in">
-                        <div class="text-emerald-500 text-4xl mb-6">
+                    <div class="collection-card bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in">
+                        <div class="text-emerald-500 text-3xl md:text-4xl mb-4 md:mb-6">
                             <i class="fas fa-palette"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Complementary Makeup</h3>
-                        <p class="text-gray-600 mb-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Complementary Makeup</h3>
+                        <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
                             Professional bridal makeup services that enhance your natural beauty while complementing your traditional attire.
                         </p>
-                        <div class="badge badge-outline border-emerald-500 text-emerald-600">Beauty</div>
+                        <div class="badge badge-outline border-emerald-500 text-emerald-600 text-xs md:text-sm">Beauty</div>
                     </div>
                     
                     <!-- Collection Card 5 -->
-                    <div class="collection-card bg-white rounded-2xl shadow-lg p-8 fade-in">
-                        <div class="text-emerald-500 text-4xl mb-6">
+                    <div class="collection-card bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in">
+                        <div class="text-emerald-500 text-3xl md:text-4xl mb-4 md:mb-6">
                             <i class="fas fa-camera"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Wedding Photography</h3>
-                        <p class="text-gray-600 mb-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Wedding Photography</h3>
+                        <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
                             Expert photography and videography services to capture your precious wedding moments with artistic excellence.
                         </p>
-                        <div class="badge badge-outline border-emerald-500 text-emerald-600">Memories</div>
+                        <div class="badge badge-outline border-emerald-500 text-emerald-600 text-xs md:text-sm">Memories</div>
                     </div>
                     
                     <!-- Collection Card 6 -->
-                    <div class="collection-card bg-white rounded-2xl shadow-lg p-8 fade-in">
-                        <div class="text-emerald-500 text-4xl mb-6">
+                    <div class="collection-card bg-white rounded-2xl shadow-lg p-6 md:p-8 fade-in">
+                        <div class="text-emerald-500 text-3xl md:text-4xl mb-4 md:mb-6">
                             <i class="fas fa-temple"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Guruvayoor Specials</h3>
-                        <p class="text-gray-600 mb-6">
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Guruvayoor Specials</h3>
+                        <p class="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
                             Exclusive collections and services specially curated for Guruvayoor temple weddings and traditional ceremonies.
                         </p>
-                        <div class="badge badge-outline border-emerald-500 text-emerald-600">Exclusive</div>
+                        <div class="badge badge-outline border-emerald-500 text-emerald-600 text-xs md:text-sm">Exclusive</div>
                     </div>
                 </div>
                 
-                <div class="text-center mt-16 fade-in">
-                    <p class="text-gray-600 text-lg">
+                <div class="text-center mt-10 md:mt-16 fade-in">
+                    <p class="text-gray-600 text-base md:text-lg">
                         And many more curated offerings for the discerning bride
                     </p>
                 </div>
@@ -280,48 +461,48 @@
         </section>
 
         <!-- Opening Soon Section -->
-        <section id="opening" class="py-20 bg-gradient-to-r from-emerald-50 to-white">
+        <section id="opening" class="section-py bg-gradient-to-r from-emerald-50 to-white">
             <div class="max-w-6xl mx-auto px-4">
-                <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 fade-in">
-                    <div class="text-center mb-10">
-                        <div class="badge badge-lg bg-emerald-500 text-white border-0 px-6 py-3 mb-6">
+                <div class="bg-white rounded-3xl shadow-2xl p-6 md:p-8 lg:p-12 fade-in">
+                    <div class="text-center mb-8 md:mb-10">
+                        <div class="badge badge-lg bg-emerald-500 text-white border-0 px-4 md:px-6 py-2 md:py-3 mb-4 md:mb-6">
                             <i class="fas fa-store mr-2"></i>
                             Coming Soon
                         </div>
-                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
                             Opening Shortly
                         </h2>
-                        <p class="text-emerald-600 text-2xl font-semibold mb-10">
+                        <p class="text-emerald-600 text-xl md:text-2xl font-semibold mb-8 md:mb-10">
                             East Guruvayoor Nada, Kerala
                         </p>
                     </div>
                     
                     <!-- Countdown -->
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-                        <div class="text-center bg-emerald-50 rounded-2xl p-8">
-                            <div class="text-5xl font-bold text-emerald-600 mb-2" id="countdown-days">00</div>
-                            <div class="text-gray-600">Days</div>
+                    <div class="countdown-grid grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-12">
+                        <div class="text-center bg-emerald-50 rounded-2xl p-4 md:p-6 lg:p-8">
+                            <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-600 mb-1 md:mb-2" id="countdown-days">00</div>
+                            <div class="text-gray-600 text-sm md:text-base">Days</div>
                         </div>
-                        <div class="text-center bg-emerald-50 rounded-2xl p-8">
-                            <div class="text-5xl font-bold text-emerald-600 mb-2" id="countdown-hours">00</div>
-                            <div class="text-gray-600">Hours</div>
+                        <div class="text-center bg-emerald-50 rounded-2xl p-4 md:p-6 lg:p-8">
+                            <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-600 mb-1 md:mb-2" id="countdown-hours">00</div>
+                            <div class="text-gray-600 text-sm md:text-base">Hours</div>
                         </div>
-                        <div class="text-center bg-emerald-50 rounded-2xl p-8">
-                            <div class="text-5xl font-bold text-emerald-600 mb-2" id="countdown-minutes">00</div>
-                            <div class="text-gray-600">Minutes</div>
+                        <div class="text-center bg-emerald-50 rounded-2xl p-4 md:p-6 lg:p-8">
+                            <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-600 mb-1 md:mb-2" id="countdown-minutes">00</div>
+                            <div class="text-gray-600 text-sm md:text-base">Minutes</div>
                         </div>
-                        <div class="text-center bg-emerald-50 rounded-2xl p-8">
-                            <div class="text-5xl font-bold text-emerald-600 mb-2" id="countdown-seconds">00</div>
-                            <div class="text-gray-600">Seconds</div>
+                        <div class="text-center bg-emerald-50 rounded-2xl p-4 md:p-6 lg:p-8">
+                            <div class="text-3xl md:text-4xl lg:text-5xl font-bold text-emerald-600 mb-1 md:mb-2" id="countdown-seconds">00</div>
+                            <div class="text-gray-600 text-sm md:text-base">Seconds</div>
                         </div>
                     </div>
                     
                     <div class="text-center">
-                        <p class="text-gray-600 text-lg mb-8">
+                        <p class="text-gray-600 text-base md:text-lg mb-6 md:mb-8">
                             We're preparing something special for you. Experience traditional bridal couture like never before.
                         </p>
                         <div class="flex justify-center">
-                            <div class="w-24 h-1 bg-emerald-500 rounded-full"></div>
+                            <div class="w-16 md:w-24 h-1 bg-emerald-500 rounded-full"></div>
                         </div>
                     </div>
                 </div>
@@ -329,64 +510,68 @@
         </section>
 
         <!-- Parent Companies -->
-        <section class="py-20 bg-gray-900 text-white">
+        <section class="section-py bg-gray-900 text-white">
             <div class="max-w-6xl mx-auto px-4">
-                <div class="text-center mb-16 fade-in">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                <div class="text-center mb-10 md:mb-16 fade-in">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                         Parent <span class="text-emerald-400">Companies</span>
                     </h2>
-                    <p class="text-gray-300 text-lg max-w-3xl mx-auto">
+                    <p class="text-gray-300 text-base md:text-lg max-w-3xl mx-auto">
                         Backed by established excellence and expertise
                     </p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="company-grid grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     <!-- Company 1 -->
-                    <div class="bg-gray-800 rounded-2xl p-8 fade-in hover:transform hover:scale-[1.02] transition-all duration-300">
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 rounded-full bg-emerald-900 flex items-center justify-center mr-6">
-                                <i class="fas fa-leather text-emerald-400 text-2xl"></i>
+                    <div class="company-card bg-gray-800 rounded-2xl p-6 md:p-8 fade-in hover:transform hover:scale-[1.02] transition-all duration-300">
+                        <div class="flex items-center mb-4 md:mb-6">
+                            <div class="mr-4 md:mr-6 flex-shrink-0">
+                                <img src="https://mozhdehleather.com/assets/logo-D98hgeDM.png" 
+                                     alt="Mozhdeh Leather Logo" 
+                                     class="company-logo">
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold">Mozhdeh Leather</h3>
-                                <p class="text-gray-400">Premium Leather Craftsmanship</p>
+                                <h3 class="text-xl md:text-2xl font-bold">Mozhdeh Leather</h3>
+                                <p class="text-gray-400 text-sm md:text-base">Premium Leather Craftsmanship</p>
                             </div>
                         </div>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-gray-300 mb-4 md:mb-6 text-sm md:text-base">
                             Specializing in exquisite leather products with unparalleled craftsmanship and quality.
                         </p>
-                        <a href="https://mozhdehleather.com" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-medium flex items-center">
+                        <a href="https://mozhdehleather.com" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-medium flex items-center text-sm md:text-base">
                             mozhdehleather.com
-                            <i class="fas fa-external-link ml-2"></i>
+                            <i class="fas fa-external-link ml-2 text-xs md:text-sm"></i>
                         </a>
                     </div>
                     
                     <!-- Company 2 -->
-                    <div class="bg-gray-800 rounded-2xl p-8 fade-in hover:transform hover:scale-[1.02] transition-all duration-300">
-                        <div class="flex items-center mb-6">
-                            <div class="w-16 h-16 rounded-full bg-emerald-900 flex items-center justify-center mr-6">
-                                <i class="fas fa-microchip text-emerald-400 text-2xl"></i>
+                    <div class="company-card bg-gray-800 rounded-2xl p-6 md:p-8 fade-in hover:transform hover:scale-[1.02] transition-all duration-300">
+                        <div class="flex items-center mb-4 md:mb-6">
+                            <div class="mr-4 md:mr-6 flex-shrink-0">
+                                <img src="https://i.pinimg.com/1200x/05/ca/f2/05caf2e4240590a585091e611a0c5e73.jpg" 
+                                     alt="Real American Technologies Logo" 
+                                     class="company-logo">
                             </div>
                             <div>
-                                <h3 class="text-2xl font-bold">Real American Technologies</h3>
-                                <p class="text-gray-400">Innovative Technology Solutions</p>
+                                <h3 class="text-xl md:text-2xl font-bold">Real American Technologies</h3>
+                                <p class="text-gray-400 text-sm md:text-base">Innovative Technology Solutions</p>
                             </div>
                         </div>
-                        <p class="text-gray-300 mb-6">
+                        <p class="text-gray-300 mb-4 md:mb-6 text-sm md:text-base">
                             Leading provider of cutting-edge technology solutions and digital innovations.
                         </p>
-                        <a href="https://realamericantechnologies.com" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-medium flex items-center">
+                        <a href="https://realamericantechnologies.com" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-medium flex items-center text-sm md:text-base">
                             realamericantechnologies.com
-                            <i class="fas fa-external-link ml-2"></i>
+                            <i class="fas fa-external-link ml-2 text-xs md:text-sm"></i>
                         </a>
                     </div>
                 </div>
                 
-                <div class="text-center mt-16 pt-8 border-t border-gray-700 fade-in">
-                    <p class="text-gray-400">
+                <div class="text-center mt-10 md:mt-16 pt-6 md:pt-8 border-t border-gray-700 fade-in">
+                    <p class="text-gray-400 text-sm md:text-base">
                         © 2026 Real American Technologies | Guruvayoor, Kerala
                     </p>
-                    <p class="text-gray-300 mt-2 text-lg">
+                    <p class="text-gray-300 mt-2 text-base md:text-lg">
                         Traditional Indian Bridal Wear
                     </p>
                 </div>
@@ -403,13 +588,12 @@
                     document.getElementById('loadingScreen').style.display = 'none';
                     document.getElementById('mainContent').classList.remove('hidden');
                     
-                    // Animate elements with delay
+                    // Trigger fade-in animations
                     const fadeElements = document.querySelectorAll('.fade-in');
-                    fadeElements.forEach((element, index) => {
+                    fadeElements.forEach((element) => {
                         setTimeout(() => {
-                            element.style.opacity = '1';
-                            element.style.transform = 'translateY(0)';
-                        }, index * 100);
+                            element.classList.add('visible');
+                        }, 100);
                     });
                 }, 500);
             }, 1500);
@@ -433,11 +617,11 @@
             
             if (distance < 0) {
                 clearInterval(countdownInterval);
-                document.querySelector('#opening .grid').innerHTML = `
-                    <div class="col-span-4 text-center py-12">
-                        <div class="text-6xl text-emerald-500 mb-6">🎉</div>
-                        <h3 class="text-3xl font-bold text-gray-900">Now Open!</h3>
-                        <p class="text-gray-600 mt-2">Visit us at East Guruvayoor Nada</p>
+                document.querySelector('#opening .countdown-grid').innerHTML = `
+                    <div class="col-span-2 md:col-span-4 text-center py-8 md:py-12">
+                        <div class="text-4xl md:text-6xl text-emerald-500 mb-4 md:mb-6">🎉</div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900">Now Open!</h3>
+                        <p class="text-gray-600 mt-2 text-base md:text-lg">Visit us at East Guruvayoor Nada</p>
                     </div>
                 `;
             }
@@ -457,43 +641,87 @@
             }
         }
 
-        // Add hover effects to collection cards
-        document.querySelectorAll('.collection-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-                this.style.borderColor = '#10b981';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
-                this.style.borderColor = 'transparent';
-            });
-        });
-
-        // Parallax effect on scroll
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const heroSection = document.querySelector('.hero');
-            if (heroSection) {
-                const rate = scrolled * -0.5;
-                heroSection.style.backgroundPosition = `center ${rate}px`;
-            }
-        });
-
-        // Add subtle animation to badge
-        const badge = document.querySelector('.float-animation');
-        if (badge) {
-            badge.addEventListener('mouseenter', function() {
-                this.style.animation = 'float 1s ease-in-out';
-            });
-            
-            badge.addEventListener('mouseleave', function() {
-                this.style.animation = 'float 3s ease-in-out infinite';
+        // Add hover effects to collection cards (only on non-touch devices)
+        if (window.matchMedia("(hover: hover)").matches) {
+            document.querySelectorAll('.collection-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.borderColor = '#10b981';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.borderColor = 'transparent';
+                });
             });
         }
+
+        // Parallax effect on scroll for larger screens
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const heroSection = document.querySelector('section:first-of-type');
+                if (heroSection) {
+                    const rate = scrolled * -0.5;
+                    heroSection.style.backgroundPosition = `center ${rate}px`;
+                }
+            });
+        }
+
+        // Add animation to badge
+        const badge = document.querySelector('.float-animation');
+        if (badge) {
+            if (window.matchMedia("(hover: hover)").matches) {
+                badge.addEventListener('mouseenter', function() {
+                    this.style.animation = 'float 1s ease-in-out';
+                });
+                
+                badge.addEventListener('mouseleave', function() {
+                    this.style.animation = 'float 3s ease-in-out infinite';
+                });
+            }
+        }
+        
+        // Handle touch events for mobile
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Add scroll animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+        
+        // Preload images for better performance
+        const preloadImages = [
+            'https://mozhdehleather.com/assets/logo-D98hgeDM.png',
+            'https://i.pinimg.com/1200x/05/ca/f2/05caf2e4240590a585091e611a0c5e73.jpg'
+        ];
+        
+        preloadImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+        
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                // Update countdown on resize to ensure proper display
+                updateCountdown();
+            }, 250);
+        });
     </script>
-    
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
